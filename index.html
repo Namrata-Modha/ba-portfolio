@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Namrata Modha | Business Systems Analyst</title>
+  <style>
+    /* ── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-dark:    #1a3557;
+      --blue-mid:     #2563a8;
+      --blue-light:   #3b82c4;
+      --blue-pale:    #dbeafe;
+      --blue-palest:  #eff6ff;
+      --gray-900:     #111827;
+      --gray-700:     #374151;
+      --gray-500:     #6b7280;
+      --gray-300:     #d1d5db;
+      --gray-100:     #f3f4f6;
+      --white:        #ffffff;
+      --accent:       #0f4c81;
+      --tag-bg:       #e0ecf8;
+      --tag-text:     #1a4e8a;
+      --radius:       8px;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+      --shadow-md:    0 4px 12px rgba(0,0,0,.10);
+      --transition:   all .18s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--gray-700);
+      background: var(--gray-100);
+    }
+
+    a { color: var(--blue-mid); text-decoration: none; }
+    a:hover { color: var(--blue-dark); text-decoration: underline; }
+
+    img { max-width: 100%; display: block; }
+
+    /* ── Layout ───────────────────────────────────────────────── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 64px 0;
+    }
+
+    section:nth-child(even) {
+      background: var(--white);
+    }
+
+    section:nth-child(odd) {
+      background: var(--gray-100);
+    }
+
+    /* ── Section headings ─────────────────────────────────────── */
+    .section-label {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue-mid);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 8px;
+    }
+
+    .section-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--blue-mid);
+      border-radius: 2px;
+      margin-bottom: 40px;
+    }
+
+    /* ── HEADER ───────────────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, var(--blue-dark) 0%, #24527a 60%, #2d6a9f 100%);
+      color: var(--white);
+      padding: 72px 0 64px;
+    }
+
+    .header-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .header-name {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      color: var(--white);
+      line-height: 1.15;
+    }
+
+    .header-tagline {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #a8d0f0;
+      margin-top: 4px;
+    }
+
+    .header-sub {
+      font-size: .95rem;
+      color: #bfdbf7;
+      margin-top: 2px;
+    }
+
+    .header-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      margin-top: 24px;
+      align-items: center;
+    }
+
+    .header-contact span,
+    .header-contact a {
+      font-size: .9rem;
+      color: #c7e2f7;
+    }
+
+    .header-contact a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    .contact-sep {
+      color: #6a9ec0;
+    }
+
+    .header-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .header-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 18px;
+      border: 1.5px solid rgba(255,255,255,.35);
+      border-radius: 24px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--white);
+      background: rgba(255,255,255,.10);
+      transition: var(--transition);
+    }
+
+    .header-link-btn:hover {
+      background: rgba(255,255,255,.20);
+      border-color: rgba(255,255,255,.6);
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    /* ── NAV BAR ──────────────────────────────────────────────── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-300);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+    }
+
+    .nav-inner a {
+      display: inline-block;
+      padding: 14px 20px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--gray-500);
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: var(--transition);
+    }
+
+    .nav-inner a:hover {
+      color: var(--blue-mid);
+      border-bottom-color: var(--blue-mid);
+      text-decoration: none;
+    }
+
+    /* ── CARDS ────────────────────────────────────────────────── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #b3cde8;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .card-desc {
+      font-size: .93rem;
+      color: var(--gray-700);
+      margin-bottom: 20px;
+    }
+
+    /* ── HIGHLIGHT BOXES ──────────────────────────────────────── */
+    .highlight-box {
+      background: var(--blue-palest);
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid var(--blue-mid);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .highlight-box-title {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--blue-mid);
+      margin-bottom: 14px;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 14px;
+    }
+
+    .metric-item {
+      background: var(--white);
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      padding: 12px 14px;
+    }
+
+    .metric-value {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      line-height: 1.2;
+    }
+
+    .metric-label {
+      font-size: .75rem;
+      color: var(--gray-500);
+      margin-top: 3px;
+    }
+
+    .deliverables-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .deliverables-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .9rem;
+      color: var(--gray-700);
+    }
+
+    .deliverables-list li::before {
+      content: "✓";
+      color: var(--blue-mid);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── TAGS / KEYWORDS ──────────────────────────────────────── */
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 12px;
+      font-size: .75rem;
+      font-weight: 600;
+    }
+
+    /* ── BUTTONS ──────────────────────────────────────────────── */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 18px;
+      border-radius: 6px;
+      font-size: .85rem;
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--blue-mid);
+      color: var(--white);
+      border: 1.5px solid var(--blue-mid);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      border-color: var(--blue-dark);
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .btn-outline {
+      background: var(--white);
+      color: var(--blue-mid);
+      border: 1.5px solid var(--blue-mid);
+    }
+
+    .btn-outline:hover {
+      background: var(--blue-palest);
+      color: var(--blue-dark);
+      border-color: var(--blue-dark);
+      text-decoration: none;
+    }
+
+    /* ── ACHIEVEMENT BADGE ────────────────────────────────────── */
+    .achievement {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fefce8;
+      border: 1px solid #fcd34d;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: .85rem;
+      color: #78350f;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    /* ── TECHNICAL PROJECTS ───────────────────────────────────── */
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: #b3cde8;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .project-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+    }
+
+    .ba-note {
+      background: var(--blue-pale);
+      border-radius: 5px;
+      padding: 10px 14px;
+      font-size: .85rem;
+      color: var(--tag-text);
+      margin: 12px 0 16px;
+      border-left: 3px solid var(--blue-light);
+    }
+
+    .ba-note strong {
+      display: block;
+      font-size: .73rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--blue-mid);
+      margin-bottom: 3px;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .tech-tag {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: 4px;
+      padding: 2px 9px;
+      font-size: .76rem;
+      color: var(--gray-700);
+      font-weight: 500;
+    }
+
+    /* ── BACKGROUND SECTION ───────────────────────────────────── */
+    .background-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .bg-card {
+      background: var(--white);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      padding: 28px 28px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .bg-card-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--blue-pale);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-size: 1.25rem;
+    }
+
+    .bg-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 8px;
+    }
+
+    .bg-card p {
+      font-size: .9rem;
+      color: var(--gray-700);
+      line-height: 1.65;
+    }
+
+    .target-roles {
+      background: linear-gradient(135deg, var(--blue-dark), #2563a8);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      color: var(--white);
+      margin-top: 28px;
+    }
+
+    .target-roles-title {
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      margin-bottom: 10px;
+    }
+
+    .target-roles p {
+      font-size: .95rem;
+      color: #dbeafe;
+      line-height: 1.65;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────── */
+    footer {
+      background: var(--blue-dark);
+      color: #93c5fd;
+      padding: 28px 0;
+      text-align: center;
+      font-size: .85rem;
+    }
+
+    footer a {
+      color: #93c5fd;
+    }
+
+    footer a:hover {
+      color: var(--white);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 680px) {
+      .header-name    { font-size: 2rem; }
+      .section-title  { font-size: 1.4rem; }
+      .background-grid { grid-template-columns: 1fr; }
+      .metrics-grid   { grid-template-columns: 1fr 1fr; }
+      .card           { padding: 22px 18px; }
+      .project-card   { padding: 22px 18px; }
+      section         { padding: 48px 0; }
+    }
+
+    @media (max-width: 400px) {
+      .metrics-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── ICON SVGs (inline) ───────────────────────────────────── */
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════ -->
+  <header id="top">
+    <div class="container">
+      <div class="header-inner">
+        <h1 class="header-name">Namrata Modha</h1>
+        <p class="header-tagline">Full-Stack Development + Business Analysis</p>
+        <p class="header-sub">BISA Postgraduate (3.97 GPA) &nbsp;|&nbsp; 3 Years Full-Stack Development</p>
+
+        <div class="header-contact">
+          <span>📞 548-881-3098</span>
+          <span class="contact-sep">·</span>
+          <a href="mailto:namratamodha3@gmail.com">namratamodha3@gmail.com</a>
+        </div>
+
+        <div class="header-links">
+          <a class="header-link-btn" href="https://linkedin.com/in/namrata-modha" target="_blank" rel="noopener">
+            <svg class="icon" width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
+          <a class="header-link-btn" href="https://github.com/Namrata-Modha" target="_blank" rel="noopener">
+            <svg class="icon" width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════
+       STICKY NAV
+  ═══════════════════════════════════════ -->
+  <nav>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#ba-portfolio">BA Portfolio</a>
+        <a href="#tech-projects">Technical Projects</a>
+        <a href="#background">Background</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════
+       BA PORTFOLIO
+  ═══════════════════════════════════════ -->
+  <section id="ba-portfolio">
+    <div class="container">
+      <p class="section-label">Business Analysis</p>
+      <h2 class="section-title">BA Portfolio</h2>
+      <div class="section-divider"></div>
+
+      <div class="card-grid">
+
+        <!-- ── Artifact 1: KYC Business Case ── -->
+        <div class="card">
+          <h3 class="card-title">Business Case — AI-Assisted KYC Digital Onboarding</h3>
+          <p class="card-desc">
+            Executive-level business case for Canadian banking KYC modernization, addressing FINTRAC regulatory tightening,
+            FATF evaluation readiness, and Open Banking preparation. Presents a rigorous strategic options analysis with
+            full financial modelling and a phased implementation roadmap.
+          </p>
+
+          <!-- Financial Metrics -->
+          <div class="highlight-box">
+            <div class="highlight-box-title">📊 Financial Highlights</div>
+            <div class="metrics-grid">
+              <div class="metric-item">
+                <div class="metric-value">860%</div>
+                <div class="metric-label">ROI over 3 years</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">CAD $17.8M</div>
+                <div class="metric-label">Net Present Value (8% discount rate)</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">3.7 months</div>
+                <div class="metric-label">Payback Period</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">$1.85M</div>
+                <div class="metric-label">Year 1 Investment</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">$7.69M</div>
+                <div class="metric-label">Annual Benefit</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scope -->
+          <div class="highlight-box">
+            <div class="highlight-box-title">📋 Scope &amp; Methodology</div>
+            <ul class="deliverables-list">
+              <li>Strategic options analysis — status quo, process optimization, AI platform implementation</li>
+              <li>Risk assessment across 6 dimensions with mitigation strategies</li>
+              <li>9-month phased implementation roadmap</li>
+              <li>Regulatory compliance framework: FINTRAC, PCMLTFA, FATF, PIPEDA</li>
+            </ul>
+          </div>
+
+          <!-- Tags -->
+          <div class="tag-list">
+            <span class="tag">Financial Analysis</span>
+            <span class="tag">ROI Modeling</span>
+            <span class="tag">NPV Calculation</span>
+            <span class="tag">Business Case Development</span>
+            <span class="tag">Regulatory Compliance</span>
+            <span class="tag">Risk Assessment</span>
+            <span class="tag">Stakeholder Management</span>
+            <span class="tag">Canadian Banking</span>
+            <span class="tag">KYC / AML</span>
+          </div>
+
+          <!-- Links -->
+          <div class="btn-group">
+            <a class="btn btn-primary" href="BusinessCase_KYC_Namrata_Modha.pdf" target="_blank" rel="noopener">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+              View Business Case (PDF)
+            </a>
+            <a class="btn btn-outline" href="KYC_BusinessCase_FinancialModel_Namrata_Modha.xlsx" target="_blank" rel="noopener">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/>
+              </svg>
+              View Financial Model (Excel)
+            </a>
+          </div>
+        </div>
+
+        <!-- ── Artifact 2: MyHealthQR BRD ── -->
+        <div class="card">
+          <h3 class="card-title">Business Requirements Document — MyHealthQR</h3>
+          <p class="card-desc">
+            Comprehensive BRD for a PIPEDA-compliant healthcare platform enabling secure QR-based patient health record
+            access for first responders and caregivers. Combines formal requirements engineering with end-to-end privacy
+            and compliance analysis.
+          </p>
+
+          <!-- Achievement -->
+          <div class="achievement">
+            🏆 First Place — Fanshawe College BISA Capstone Showcase, April 2025
+          </div>
+
+          <!-- Deliverables -->
+          <div class="highlight-box">
+            <div class="highlight-box-title">📄 Deliverables</div>
+            <ul class="deliverables-list">
+              <li>8 functional requirements (FR-01 through FR-08)</li>
+              <li>AS-IS / TO-BE process flow analysis</li>
+              <li>Stakeholder analysis and scope management</li>
+              <li>Privacy and compliance framework (PIPEDA)</li>
+              <li>Audit logging and security requirements</li>
+            </ul>
+          </div>
+
+          <p style="font-size:.9rem; color:var(--gray-700); margin-bottom:20px;">
+            Led technical implementation as the project's Technical Lead while coordinating with the Business Analyst
+            to translate requirements into a deliverable system — bridging both domains from documentation through deployment.
+          </p>
+
+          <!-- Tags -->
+          <div class="tag-list">
+            <span class="tag">Requirements Documentation</span>
+            <span class="tag">Functional Specifications</span>
+            <span class="tag">Process Flows</span>
+            <span class="tag">Stakeholder Analysis</span>
+            <span class="tag">PIPEDA Compliance</span>
+            <span class="tag">Healthcare IT</span>
+            <span class="tag">Scope Management</span>
+          </div>
+
+          <!-- Link -->
+          <div class="btn-group">
+            <a class="btn btn-primary" href="MyHealthQR_BRD_Namrata_Modha.pdf" target="_blank" rel="noopener">
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+              View BRD (PDF)
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /card-grid -->
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       TECHNICAL PROJECTS
+  ═══════════════════════════════════════ -->
+  <section id="tech-projects">
+    <div class="container">
+      <p class="section-label">Engineering Work</p>
+      <h2 class="section-title">Technical Projects</h2>
+      <div class="section-divider"></div>
+
+      <div class="card-grid">
+
+        <!-- Project 1: Rubin Scout -->
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">Rubin Scout</h3>
+          </div>
+          <p class="card-desc">
+            Astronomical alert processing platform handling 200,000+ daily alerts from ZTF and LSST surveys. Built for the astronomy research community requiring real-time data filtering, classification, and collaborative annotation.
+          </p>
+
+          <div class="tech-stack">
+            <span class="tech-tag">FastAPI</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Supabase</span>
+          </div>
+
+          <div class="ba-note">
+            <strong>BA Relevance</strong>
+            Requirements gathering for a high-throughput data processing pipeline; stakeholder collaboration with the astronomy research community; UAT coordination across distributed research teams.
+          </div>
+
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://rubin-scout.vercel.app/" target="_blank" rel="noopener">
+              <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              Live Demo
+            </a>
+            <a class="btn btn-outline" href="https://github.com/Namrata-Modha/rubin-scout" target="_blank" rel="noopener">
+              <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2: MediLight -->
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">MediLight</h3>
+          </div>
+          <p class="card-desc">
+            AI-powered pharmacy fraud prevention system achieving 95% detection accuracy. Combines machine learning with pharmacy workflow integration to flag anomalous prescription patterns in real time.
+          </p>
+
+          <div class="tech-stack">
+            <span class="tech-tag">AI / ML</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">REST API</span>
+          </div>
+
+          <div class="ba-note">
+            <strong>BA Relevance</strong>
+            Requirements gathering sessions with pharmacy stakeholders; translated operational fraud challenges into technical detection specifications; defined acceptance criteria for model performance thresholds.
+          </div>
+
+          <div class="btn-group">
+            <a class="btn btn-primary" href="https://medilight-dashboard.vercel.app/" target="_blank" rel="noopener">
+              <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              Live Demo
+            </a>
+            <a class="btn btn-outline" href="https://github.com/Namrata-Modha/medilight-guide" target="_blank" rel="noopener">
+              <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: MyHealthQR -->
+        <div class="project-card">
+          <div class="project-header">
+            <h3 class="project-title">MyHealthQR</h3>
+            <div class="achievement" style="margin-bottom:0; font-size:.8rem; padding:6px 12px;">🏆 Capstone First Place</div>
+          </div>
+          <p class="card-desc">
+            PIPEDA-compliant QR-based patient health record access system for first responders and caregivers. Served as Technical Lead, coordinating with the Business Analyst to translate requirements into a deployable system with full audit logging.
+          </p>
+
+          <div class="tech-stack">
+            <span class="tech-tag">Laravel</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">QR Code Generation</span>
+            <span class="tech-tag">OAuth 2.0</span>
+            <span class="tech-tag">Audit Logging</span>
+          </div>
+
+          <div class="ba-note">
+            <strong>BA Relevance</strong>
+            Technical Lead bridging BA requirements (BRD) and engineering delivery; managed requirements traceability from FR-01 through FR-08; coordinated cross-functional UAT with healthcare stakeholder group.
+          </div>
+
+          <div class="btn-group">
+            <a class="btn btn-outline" href="https://github.com/Namrata-Modha/myhealthqr" target="_blank" rel="noopener">
+              <svg class="icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /card-grid -->
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       BACKGROUND
+  ═══════════════════════════════════════ -->
+  <section id="background">
+    <div class="container">
+      <p class="section-label">Experience &amp; Education</p>
+      <h2 class="section-title">Full-Stack Development + Business Analysis</h2>
+      <div class="section-divider"></div>
+
+      <div class="background-grid">
+
+        <div class="bg-card">
+          <div class="bg-card-icon">💼</div>
+          <h3 class="bg-card-title">Development Experience</h3>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:7px; font-size:.9rem; color:var(--gray-700);">
+            <li style="display:flex; gap:10px;"><span style="color:var(--blue-mid); font-weight:700; flex-shrink:0;">—</span><span>Peanut Square — Laravel, payment systems, 200K+ daily transactions</span></li>
+            <li style="display:flex; gap:10px;"><span style="color:var(--blue-mid); font-weight:700; flex-shrink:0;">—</span><span>Dev Information Technology — microservices, Node.js, REST APIs</span></li>
+            <li style="display:flex; gap:10px;"><span style="color:var(--blue-mid); font-weight:700; flex-shrink:0;">—</span><span>Direct requirements elicitation with business stakeholders across both roles</span></li>
+            <li style="display:flex; gap:10px;"><span style="color:var(--blue-mid); font-weight:700; flex-shrink:0;">—</span><span>Translated business needs into technical specifications</span></li>
+            <li style="display:flex; gap:10px;"><span style="color:var(--blue-mid); font-weight:700; flex-shrink:0;">—</span><span>Coordinated UAT activities, bridging stakeholder and engineering teams</span></li>
+          </ul>
+        </div>
+
+        <div class="bg-card">
+          <div class="bg-card-icon">🎓</div>
+          <h3 class="bg-card-title">BA Training</h3>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:7px; font-size:.9rem; color:var(--gray-700);">
+            <li style="display:flex; gap:10px;"><span style="color:var(--blue-mid); font-weight:700; flex-shrink:0;">—</span><span>Postgraduate Diploma in Business &amp; Information Systems Architecture — Fanshawe College</span></li>
+            <li style="display:flex; gap:10px;"><span style="color:var(--blue-mid); font-weight:700; flex-shrink:0;">—</span><span>3.97 GPA, Dean's Honour Roll</span></li>
+            <li style="display:flex; gap:10px;"><span style="color:var(--blue-mid); font-weight:700; flex-shrink:0;">—</span><span>Requirements engineering, process modeling (BPMN, UML), stakeholder management</span></li>
+            <li style="display:flex; gap:10px;"><span style="color:var(--blue-mid); font-weight:700; flex-shrink:0;">—</span><span>Business case development and data governance frameworks</span></li>
+            <li style="display:flex; gap:10px;"><span style="color:var(--blue-mid); font-weight:700; flex-shrink:0;">—</span><span>🏆 First Place, BISA Capstone Showcase — April 2025</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="target-roles">
+        <div class="target-roles-title">🎯 Target Roles</div>
+        <p>
+          Seeking <strong>Business Analyst</strong> and <strong>Business Systems Analyst</strong> positions where
+          technical depth and formal BA training create unique value. The combination of hands-on system delivery and
+          structured analysis methodology means I can bridge stakeholders and engineers with credibility on both sides
+          of the conversation.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <p>© 2026 Namrata Modha &nbsp;|&nbsp; Business Systems Analyst Portfolio</p>
+      <p style="margin-top:6px; font-size:.8rem; color:#64a0c8;">
+        <a href="mailto:namratamodha3@gmail.com">namratamodha3@gmail.com</a>
+        &nbsp;·&nbsp;
+        <a href="https://linkedin.com/in/namrata-modha" target="_blank" rel="noopener">LinkedIn</a>
+        &nbsp;·&nbsp;
+        <a href="https://github.com/Namrata-Modha" target="_blank" rel="noopener">GitHub</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
